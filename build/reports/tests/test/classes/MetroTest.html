@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class MetroTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class MetroTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/default-package.html">default-package</a> &gt; MetroTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">1</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">3.614s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="takeAllTimeInMetro()"></a>
+<h3 class="failures">takeAllTimeInMetro()</h3>
+<span class="code">
+<pre>com.microsoft.playwright.PlaywrightException: Error {
+  message='net::ERR_NETWORK_CHANGED at https://metrobook.ru/
+  name='Error
+  stack='Error: net::ERR_NETWORK_CHANGED at https://metrobook.ru/
+    at FrameSession._navigate (C:\Users\Vlad\AppData\Local\Temp\playwright-java-14025732343163836562\package\lib\server\chromium\crPage.js:512:35)
+    at async Frame._gotoAction (C:\Users\Vlad\AppData\Local\Temp\playwright-java-14025732343163836562\package\lib\server\frames.js:534:28)
+}
+Call log:
+- navigating to &quot;https://metrobook.ru/&quot;, waiting until &quot;load&quot;
+
+	at app//com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:54)
+	at app//com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:120)
+	at app//com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:129)
+	at app//com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:106)
+	at app//com.microsoft.playwright.impl.FrameImpl.navigateImpl(FrameImpl.java:463)
+	at app//com.microsoft.playwright.impl.PageImpl.lambda$navigate$45(PageImpl.java:836)
+	at app//com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+	at app//com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:89)
+	at app//com.microsoft.playwright.impl.PageImpl.navigate(PageImpl.java:836)
+	at app//com.microsoft.playwright.impl.PageImpl.navigate(PageImpl.java:42)
+	at app//com.microsoft.playwright.Page.navigate(Page.java:5332)
+	at app//MetroBookPage.&lt;init&gt;(MetroBookPage.java:23)
+	at app//MetroTest.takeAllTimeInMetro(MetroTest.java:10)
+	at java.base@18.0.2/java.lang.reflect.Method.invoke(Method.java:577)
+	at java.base@18.0.2/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base@18.0.2/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: com.microsoft.playwright.impl.DriverException: Error {
+  message='net::ERR_NETWORK_CHANGED at https://metrobook.ru/
+  name='Error
+  stack='Error: net::ERR_NETWORK_CHANGED at https://metrobook.ru/
+    at FrameSession._navigate (C:\Users\Vlad\AppData\Local\Temp\playwright-java-14025732343163836562\package\lib\server\chromium\crPage.js:512:35)
+    at async Frame._gotoAction (C:\Users\Vlad\AppData\Local\Temp\playwright-java-14025732343163836562\package\lib\server\frames.js:534:28)
+}
+Call log:
+- navigating to &quot;https://metrobook.ru/&quot;, waiting until &quot;load&quot;
+
+	at app//com.microsoft.playwright.impl.Connection.dispatch(Connection.java:259)
+	at app//com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:209)
+	at app//com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:118)
+	... 14 more
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="failures">takeAllTimeInMetro()</td>
+<td class="failures">3.614s</td>
+<td class="failures">failed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>0 [Test worker] INFO MetroBookPage  - Start
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.5.1</a> at 14 мая 2024 г., 00:22:42</p>
+</div>
+</div>
+</body>
+</html>

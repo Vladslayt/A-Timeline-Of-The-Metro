@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MetroTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-05-13T21:22:38" hostname="MSI" time="3.614">
+  <properties/>
+  <testcase name="takeAllTimeInMetro()" classname="MetroTest" time="3.614">
+    <failure message="com.microsoft.playwright.PlaywrightException: Error {&#10;  message='net::ERR_NETWORK_CHANGED at https://metrobook.ru/&#10;  name='Error&#10;  stack='Error: net::ERR_NETWORK_CHANGED at https://metrobook.ru/&#10;    at FrameSession._navigate (C:\Users\Vlad\AppData\Local\Temp\playwright-java-14025732343163836562\package\lib\server\chromium\crPage.js:512:35)&#10;    at async Frame._gotoAction (C:\Users\Vlad\AppData\Local\Temp\playwright-java-14025732343163836562\package\lib\server\frames.js:534:28)&#10;}&#10;Call log:&#10;- navigating to &quot;https://metrobook.ru/&quot;, waiting until &quot;load&quot;&#10;" type="com.microsoft.playwright.PlaywrightException">com.microsoft.playwright.PlaywrightException: Error {
+  message='net::ERR_NETWORK_CHANGED at https://metrobook.ru/
+  name='Error
+  stack='Error: net::ERR_NETWORK_CHANGED at https://metrobook.ru/
+    at FrameSession._navigate (C:\Users\Vlad\AppData\Local\Temp\playwright-java-14025732343163836562\package\lib\server\chromium\crPage.js:512:35)
+    at async Frame._gotoAction (C:\Users\Vlad\AppData\Local\Temp\playwright-java-14025732343163836562\package\lib\server\frames.js:534:28)
+}
+Call log:
+- navigating to &quot;https://metrobook.ru/&quot;, waiting until &quot;load&quot;
+
+	at app//com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:54)
+	at app//com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:120)
+	at app//com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:129)
+	at app//com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:106)
+	at app//com.microsoft.playwright.impl.FrameImpl.navigateImpl(FrameImpl.java:463)
+	at app//com.microsoft.playwright.impl.PageImpl.lambda$navigate$45(PageImpl.java:836)
+	at app//com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+	at app//com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:89)
+	at app//com.microsoft.playwright.impl.PageImpl.navigate(PageImpl.java:836)
+	at app//com.microsoft.playwright.impl.PageImpl.navigate(PageImpl.java:42)
+	at app//com.microsoft.playwright.Page.navigate(Page.java:5332)
+	at app//MetroBookPage.&lt;init&gt;(MetroBookPage.java:23)
+	at app//MetroTest.takeAllTimeInMetro(MetroTest.java:10)
+	at java.base@18.0.2/java.lang.reflect.Method.invoke(Method.java:577)
+	at java.base@18.0.2/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base@18.0.2/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: com.microsoft.playwright.impl.DriverException: Error {
+  message='net::ERR_NETWORK_CHANGED at https://metrobook.ru/
+  name='Error
+  stack='Error: net::ERR_NETWORK_CHANGED at https://metrobook.ru/
+    at FrameSession._navigate (C:\Users\Vlad\AppData\Local\Temp\playwright-java-14025732343163836562\package\lib\server\chromium\crPage.js:512:35)
+    at async Frame._gotoAction (C:\Users\Vlad\AppData\Local\Temp\playwright-java-14025732343163836562\package\lib\server\frames.js:534:28)
+}
+Call log:
+- navigating to &quot;https://metrobook.ru/&quot;, waiting until &quot;load&quot;
+
+	at app//com.microsoft.playwright.impl.Connection.dispatch(Connection.java:259)
+	at app//com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:209)
+	at app//com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:118)
+	... 14 more
+</failure>
+  </testcase>
+  <system-out><![CDATA[0 [Test worker] INFO MetroBookPage  - Start
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
