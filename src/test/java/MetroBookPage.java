@@ -1,58 +1,63 @@
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
+import com.microsoft.playwright.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.BasicConfigurator;
 
 import java.io.*;
 
-/**
- * Главная страница сайта
- */
 @Slf4j
 public class MetroBookPage {
-    private final Page page;
-    private final Locator inputStationsFrom;
-    private final Locator inputStationsTo;
-    private final Locator time;
+    private final Browser browser;
 
-    public MetroBookPage(Page page) {
+    public MetroBookPage(Browser browser) {
         BasicConfigurator.configure();
         log.info("Start");
-        this.page = page;
-        page.navigate("https://metrobook.ru/");
-
-        inputStationsFrom = page.locator("#fromStation");
-        inputStationsTo = page.locator("#toStation");
-
-        time = page.locator("#totalTime");
+        this.browser = browser;
     }
 
-    public MetroBookPage fillStations() {
-        String stationFrom, stationTo;
-        for(int i = 73; i < 244; i++){
-            stationFrom = takeStrFromFile(i);
-
-            inputStationsFrom.fill(stationFrom);
-            page.keyboard().press("ArrowDown");
-            page.keyboard().press("Enter");
-
-            for (int j = i + 1; j < 244; j++){
-                stationTo = takeStrFromFile(j);
-
-                inputStationsTo.fill(stationTo);
+    public void fillStations(int start, int end) {
+        try (BrowserContext context = browser.newContext()) {
+            Page page = context.newPage();
+            page.navigate("https://metrobook.ru/");
+            String filename = Thread.currentThread().getName() + ".txt";
+            for (int i = start; i < end; i++) {
+                String stationFrom = takeStrFromFile(i);
+                Locator inputStationsFrom = page.locator("#fromStation");
+                inputStationsFrom.fill(stationFrom);
                 page.keyboard().press("ArrowDown");
                 page.keyboard().press("Enter");
+                for (int j = i + 1; j < end; j++) {
+                    String stationTo = takeStrFromFile(j);
 
-                page.waitForTimeout(300);
-                String strTime = time.textContent();
+                    Locator inputStationsTo = page.locator("#toStation");
+                    Locator time = page.locator("#totalTime");
 
-                appendToFile(stationFrom, stationTo, strTime);
+                    inputStationsTo.fill(stationTo);
+                    page.keyboard().press("ArrowDown");
+                    page.keyboard().press("Enter");
 
-                page.waitForTimeout(1500);
+                    page.waitForTimeout(300);
+                    String strTime = time.textContent();
+
+                    // Запись в файл
+                    appendToFile(filename, stationFrom, stationTo, strTime);
+
+                    // Запись в консоль для диагностики
+                    System.out.println(stationFrom + "\"  \"" + stationTo + "\"  \"" + strTime + "\"");
+
+                    page.waitForTimeout(1500);
+                }
             }
         }
+    }
 
-        return this;
+    public static void appendToFile(String filename, String staFrom, String stanTo, String time) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))){
+            String s = "\"" + staFrom + "\"  \"" + stanTo + "\"  \"" + time + "\"";
+            writer.append(s);
+            writer.append("\n");
+        } catch(IOException e) {
+            System.err.println(e);
+        }
     }
 
     public static String takeStrFromFile(int numberLine) {
@@ -69,15 +74,5 @@ public class MetroBookPage {
             System.err.println("Ошибка при чтении файла: " + e.getMessage());
         }
         return null;
-    }
-
-    public static void appendToFile(String staFrom, String stanTo, String time) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("allTime.txt", true))){
-            String s = "\"" + staFrom + "\"  \"" + stanTo + "\"  \"" + time + "\"";
-            writer.append(s);
-            writer.append("\n");
-        } catch(IOException e) {
-            System.err.println(e);
-        }
     }
 }
